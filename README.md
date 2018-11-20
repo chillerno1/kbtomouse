@@ -10,7 +10,7 @@ $ pip install -r requirements.txt
 ```
 ## Usage
 ```
-kbtomouse/main.py
+python kbtomouse/main.py
  1. hold ctrl and press arrows to move cursor around. 
  2. ctrl+space mimics a left click.
 
