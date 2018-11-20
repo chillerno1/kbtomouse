@@ -1,11 +1,14 @@
 import keyboard
 import math
 import pyautogui
+
+from config import Config
 from threading import *
 
-screen_height, screen_width = pyautogui.size()
-travel_proportion = 0.01
-modifier = "ctrl"
+screen_height = Config.SCREEN_HEIGHT
+screen_width = Config.SCREEN_WIDTH
+travel_proportion = Config.TRAVEL_DIST
+modifier = Config.MODIFIER
 
 def key_listener(key):
 
@@ -15,7 +18,7 @@ def key_listener(key):
         if key == 'ctrl+space': pyautogui.click()
         else: pyautogui.moveRel(m[key]['x'], m[key]['y'])
 
-def set_directions_and_sizes():
+def input_mapping():
     """
     Sets movement of cursor in proportion to screen size.
         Up, down, left and right travel at approx 1% screen size.
@@ -26,15 +29,15 @@ def set_directions_and_sizes():
     y = math.ceil(screen_width * travel_proportion)
 
     movements = {
-        'left' : {'x' : -x, 'y' : 0},
-        'down' : {'x' : 0, 'y' : y},
-        'right' : {'x' : x, 'y' : 0},
-        'up' : {'x' : 0, 'y' : -y},
+        'left' : {'x' : -x, 'y' :  0},
+        'down' : {'x' :  0, 'y' :  y},
+        'right': {'x' :  x, 'y' :  0},
+        'up'   : {'x' :  0, 'y' : -y},
     }
 
     directions = [d for d in movements]
 
-    # diagonals
+    # set distance for diagonals
     for first_move in directions:
         for second_move in directions:
             if first_move != second_move:
@@ -44,7 +47,7 @@ def set_directions_and_sizes():
 
                 if name not in movements: movements[name] = {'x' : x, 'y' : y}
     
-    # adds modifier to key names
+    # adds modifier into key names
     if len(modifier) > 0:
         moves = [m for m in movements]
 
@@ -59,7 +62,7 @@ def set_directions_and_sizes():
  
 if __name__ == '__main__':
 
-    m = set_directions_and_sizes()    
+    m = input_mapping()    
     threads = [Thread(target=key_listener, kwargs={"key":key}) for key in m]
 
     for thread in threads:

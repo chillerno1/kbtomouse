@@ -1,2 +1,2 @@
-pyautogiu==0.9.38
+pyautogui==0.9.38
 keyboard==0.13.2
