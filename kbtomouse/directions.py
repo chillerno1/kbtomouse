@@ -3,7 +3,7 @@ from config import Config
 
 class DirectionMapper(object):
 
-    def __init__(self,):
+    def __init__(self):
         self.h = Config.SCREEN_HEIGHT
         self.w = Config.SCREEN_WIDTH
         self.td = Config.TRAVEL_DIST
@@ -44,7 +44,7 @@ class DirectionMapper(object):
             del self.key_inputs[input]
 
     def _set_click(self):
-        self.key_inputs['ctrl+space'] = {'x': 0, 'y': 0}
+        self.key_inputs['ctrl+space'] = {'x' : 0, 'y' : 0}
 
     def input_map(self):
         """

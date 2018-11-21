@@ -1,5 +1,6 @@
 import keyboard
 import pyautogui
+import log
 
 from threading import *
 from config import Config
@@ -12,6 +13,8 @@ def key_listener(key):
     
         if key == 'ctrl+space': pyautogui.click()
         else: pyautogui.moveRel(m[key]['x'], m[key]['y'])
+        
+        log.info("x: {} | y: {} | key: {}".format(m[key]['x'], m[key]['y'], key))
  
 if __name__ == '__main__':
 
