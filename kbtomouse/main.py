@@ -3,7 +3,6 @@ import pyautogui
 import log
 
 from threading import *
-from config import Config
 from directions import DirectionMapper
 
 def key_listener(key):

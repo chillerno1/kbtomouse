@@ -6,7 +6,7 @@ class DirectionMapper(object):
     def __init__(self):
         self.h = Config.SCREEN_HEIGHT
         self.w = Config.SCREEN_WIDTH
-        self.td = Config.TRAVEL_DIST
+        self.td = Config.TRAVEL_DIST / 100
         self.mod = Config.MODIFIER
 
         self.x = ceil(self.h * self.td)
